@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Success MindHack</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="style.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="title-section">
+                        <h5>Ever wanted to know how some people just keep succeeding in life?</h5>
+                        <h2>"the world's most successful celebrities, rappers, actors and athletes have been secretly using this "mind hack" meditation for years..."</h2>
+                    </div>
+                    <div class="video-image">
+                        <img src="image/image.webp" alt="Image Alt Text" onclick="NewTab()">
+                    </div>
+                    <div class="countdown-timer">
+                        <span id="countdown" class="timer"></span>
+                        <p id="countdown-title"></p>
+                    </div>
+                    <div class="button-section">
+                        <a href="#">Click Here to Watch The Video</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="boxes">
+                <div id="dialog" class="window">
+                    <h2>WHOA! Hold on a second...</h2>
+                    <div class="popup-text">
+                        <p>If you're a NEWBIE and you need money ASAP! What If It Was A No BS Way To Earn Money Online in 24 hours FLAT!</p>
+                        <p>If You Want It, and want to Discover how this NEWBIE made $600,000 in 4 months FLAT as a NEWBIE with No Money or Tech Skills, This is for you. (you will thank me once you click Yes I Want It Now and See Undeniable Proof On Next
+                            Page)
+                        </p>
+                    </div>
+                    <div id="popupfoot"> <a href="#" class="close agree">YES! I WANT IT NOW!</a></div>
+                </div>
+                <div id="mask"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function NewTab() {
+            window.open(
+                "https://www.feedfame.com ", "_blank ");
+        }
+        var upgradeTime = 240;
+        var seconds = upgradeTime;
+
+        function timer() {
+            var days = Math.floor(seconds / 24 / 60 / 60);
+            var hoursLeft = Math.floor((seconds) - (days * 86400));
+            var hours = Math.floor(hoursLeft / 3600);
+            var minutesLeft = Math.floor((hoursLeft) - (hours * 3600));
+            var minutes = Math.floor(minutesLeft / 60);
+            var remainingSeconds = seconds % 60;
+
+            function pad(n) {
+                return (n < 10 ? "0" + n : n);
+            }
+            document.getElementById('countdown').innerHTML = pad(hours) + " : " + pad(minutes) + " : " + pad(remainingSeconds);
+            document.getElementById('countdown-title').innerHTML = "Hr" + " : " + "Min" + " : " + "Sec";
+            if (seconds == 0) {
+                clearInterval(countdownTimer);
+                document.getElementById('countdown').innerHTML = "Completed";
+            } else {
+                seconds--;
+            }
+        }
+        var countdownTimer = setInterval('timer()', 1000);
+    </script>
+    <script>
+        $(document).ready(function() {
+
+            var id = '#dialog';
+
+            //Get the screen height and width
+            var maskHeight = $(document).height();
+            var maskWidth = $(window).width();
+
+            //Set heigth and width to mask to fill up the whole screen
+            $('#mask').css({
+                'width': maskWidth,
+                'height': maskHeight
+            });
+
+            //transition effect
+            $('#mask').fadeIn(500);
+            $('#mask').fadeTo("slow", 0.9);
+
+            //Get the window height and width
+            var winH = $(window).height();
+            var winW = $(window).width();
+
+            //Set the popup window to center
+            $(id).css('top', winH / 2 - $(id).height() / 2);
+            $(id).css('left', winW / 2 - $(id).width() / 2);
+
+            //transition effect
+            $(id).fadeIn(2000);
+
+            //if close button is clicked
+            $('.window .close').click(function(e) {
+                //Cancel the link behavior
+                e.preventDefault();
+
+                $('#mask').hide();
+                $('.window').hide();
+            });
+
+            //if mask is clicked
+            $('#mask').click(function() {
+                $(this).hide();
+                $('.window').hide();
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>
